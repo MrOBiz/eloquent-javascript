@@ -29,7 +29,7 @@ function talk(f){
 talk(Math.min)(3, 2, 5, -7, 1);
 
 //Function that modify control flow:
-// CONTROL-FLOW HELPER
+//CONTROL-FLOW HELPER
 function unless(test, then){
   if (!test) then();
 }
