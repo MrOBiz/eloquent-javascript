@@ -59,3 +59,41 @@ console.log(sum(range(1, 10)));
 console.log(range(25, 2, -3));
 console.log(sum(range(25, 2, -3)));
 //added to tryout my solution
+
+
+console.log("EX 2");
+
+function reverseArray(arr){
+    let newArray = new Array;
+    for(let i = 0; i < arr.length; i++){
+        newArray.push(arr[(arr.length -1) -i]);
+    }
+
+    return newArray;
+}
+
+function reverseArrayInPlace(arr){
+    let newArray = new Array;
+    for(let i = 0; i < Math.floor(arr.length/2); i++){
+        let t = arr[i];
+        arr[i] = arr[(arr.length -1) -i];
+        arr[(arr.length -1) -i] = t;
+    }
+}
+
+//BOOK SOLUTION: same with inverse loop for reverseArray()
+
+let myArray = ["A", "B", "C", "D", "E"];
+console.log(reverseArray(myArray));
+// → ["C", "B", "A"];
+console.log(myArray);
+// → ["A", "B", "C"];
+let arrayValue = [1, 2, 3, 4, 5];
+reverseArrayInPlace(arrayValue);
+console.log(arrayValue);
+// → [5, 4, 3, 2, 1]
+
+
+
+
+console.log("EX 3");
