@@ -2,15 +2,19 @@ console.log("EX 1");
 
 function range(start, end, step){
     let arr = [];
-    //if(start < end){
-        for(let i = start; i <= end; i + step){
+    if(start < end){
+        let i = start;
+        while(i <= end){
             arr.push(i);
+            i ++;
         }
-    /* }else if(start > end){
-        for(let i = end; i >= start; i - step){
+    }else if(start > end){
+        let i = start;
+        while(i >= end){
             arr.push(i);
+            i --;
         }
-    } */
+    } 
 
     return arr;
 }
