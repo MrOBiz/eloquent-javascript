@@ -109,12 +109,16 @@ let arrayToList = (arr) => {
         return null;
     }
 }
+
     
+let arr = [];
 function listToArray(list){
-    let arr = [];
-    {
-        arr.push();
+    
+    arr.push(list.value);
+    if(list.rest != null){
+        listToArray(list.rest);
     }
+
     return arr;
 }
 
