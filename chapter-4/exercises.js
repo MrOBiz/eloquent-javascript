@@ -61,6 +61,11 @@ console.log(sum(range(25, 2, -3)));
 //added to tryout my solution
 
 
+
+
+
+
+
 console.log("EX 2");
 
 function reverseArray(arr){
@@ -92,6 +97,9 @@ let arrayValue = [1, 2, 3, 4, 5];
 reverseArrayInPlace(arrayValue);
 console.log(arrayValue);
 // → [5, 4, 3, 2, 1]
+
+
+
 
 
 
@@ -152,8 +160,8 @@ function listToArray(list) {
   for (let node = list; node; node = node.rest) {
     array.push(node.value);
   }
-  return array;
-}
+    return array;
+    }
 
 function prepend(value, list) {
   return {value, rest: list};
@@ -175,3 +183,31 @@ console.log(prepend(10, prepend(20, null)));
 // → {value: 10, rest: {value: 20, rest: null}}
 console.log(nth(arrayToList([10, 20, 30]), 1));
 // → 20
+
+
+
+
+
+
+
+
+
+console.log("EX 4");
+
+function deepEqual(first, second){
+    for(let prop in first){
+        
+    }
+
+}
+
+
+
+
+let obj = {here: {is: "an"}, object: 2};
+//console.log(deepEqual(obj, obj));
+// → true
+//console.log(deepEqual(obj, {here: 1, object: 2}));
+// → false
+//console.log(deepEqual(obj, {here: {is: "an"}, object: 2}));
+// → true
