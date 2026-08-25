@@ -195,9 +195,18 @@ console.log(nth(arrayToList([10, 20, 30]), 1));
 console.log("EX 4");
 
 function deepEqual(first, second){
+    let propFirst = new Array;
+    let propSecond = new Array;
+
     for(let prop in first){
-        
+        propFirst.push(prop);        
     }
+
+    for(let prop in second){
+        propSecond.push(prop);        
+    }
+
+    if
 
 }
 
