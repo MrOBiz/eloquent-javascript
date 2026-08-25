@@ -194,29 +194,42 @@ console.log(nth(arrayToList([10, 20, 30]), 1));
 
 console.log("EX 4");
 
-function deepEqual(first, second){
-    let propFirst = new Array;
-    let propSecond = new Array;
+function deepEqual(a, b){
+    if(a === b){
+        return true;
+    }else if(typeof a != "object" || typeof b != "object" || 
+            a === null || b === null){
+        return false;
+    }else{
+        let keysA = Object.keys(a);
+        let keysB = Object.keys(b);
 
-    for(let prop in first){
-        propFirst.push(prop);        
+        if(keysA.length != keysB.length){
+            return false;
+        }else{
+            for(let key of keysA){
+                if(!(key in b)) return false;
+                if(!(deepEqual(a[key], b[key]))){
+                    return false;
+                }
+            }
+            return true;
+        }
     }
-
-    for(let prop in second){
-        propSecond.push(prop);        
-    }
-
-    if
-
 }
 
 
-
+console.log(deepEqual(null, null));
+console.log(deepEqual(null, {}));
+console.log(deepEqual(1, "1"));
+console.log(deepEqual(1, {value: 1}));
+console.log(deepEqual(undefined, null));
+console.log(deepEqual({}, {}));
 
 let obj = {here: {is: "an"}, object: 2};
-//console.log(deepEqual(obj, obj));
+console.log(deepEqual(obj, obj));
 // → true
-//console.log(deepEqual(obj, {here: 1, object: 2}));
+console.log(deepEqual(obj, {here: 1, object: 2}));
 // → false
-//console.log(deepEqual(obj, {here: {is: "an"}, object: 2}));
+console.log(deepEqual(obj, {here: {is: "an"}, object: 2}));
 // → true
