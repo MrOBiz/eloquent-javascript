@@ -28,8 +28,8 @@ class Dog {
     }
 }
 
-let happySpot = new Dog("Happy");
-happySpot.speak("Shut the F up");
+let Spot = new Dog("Happy");
+Spot.speak("Shut the F up");
 
 //Private properties
 class Secret {
