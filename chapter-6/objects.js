@@ -16,9 +16,9 @@ console.log(Object.getPrototypeOf(toString));
 
 
 //Class was introduced in 2015, before all functions could be used to 
-// define objects. For this reason, all non-arrow functions start with
-//  a prototype property holding
-// an empty object
+//define objects. For this reason, all non-arrow functions start with
+//a prototype property holding
+//an empty object
 class Dog {
     constructor(type){
         this.type = type;
@@ -45,7 +45,7 @@ class Secret {
 console.log(new Secret().interrogate());
 
 //We can pass null in Object.create() to make it so that the object 
-// doesn't inherit from the Object prototype and can be used as a map
+//doesn't inherit from the Object prototype and can be used as a map
 
 console.log("toString" in Object.create(null)); //FALSE
 
