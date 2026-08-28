@@ -53,7 +53,7 @@ console.log("toString" in Object.create(null)); //FALSE
 
 let ages = new Map();
 ages.set("Boris", 39);
-ages.set("Liang", 13);
+ages.set("Chang", 13);
 ages.set("Julia", 24);
 
 console.log("Boris is " + ages.get("Boris"));
