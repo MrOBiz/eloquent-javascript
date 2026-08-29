@@ -1,6 +1,5 @@
 //Arrow functions can see the 'this' binding of the scope around them
-//If some's argument was written using the 'function' keyword, it
-//wouldn't work
+
 let finder = {
     find(array){
         return array.some(val => val == this.value);
