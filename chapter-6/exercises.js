@@ -60,7 +60,22 @@ console.log(makeVec(1, 2));
 console.log("EX 2");
 
 class Group {
-  // Your code here.
+
+    constructor(){
+
+    }
+    
+    add(){
+
+    }
+
+    delete(){
+
+    }
+
+    has(){
+
+    }
 }
 
 let group = Group.from([10, 20]);
