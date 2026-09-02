@@ -1,6 +1,30 @@
 console.log("EX 1");
 
+class Vec {
+    constructor(x, y){
+        this.x = x;
+        this.y = y;
+    }
 
+    plus(vec){
+        let newX = this.x + vec.x;
+        let newY = this.y + vec.y;
+
+        return new Vec(newX, newY);
+    }
+
+    minus(vec){
+        let newX = this.x - vec.x;
+        let newY = this.y - vec.y;
+
+        return new Vec(newX, newY);
+    }
+
+    get length(){
+        let distance = 0;
+        return distance = Math.sqrt(this.x**2 + this.y**2);
+    }
+}
 
 
 console.log(new Vec(1, 2).plus(new Vec(2, 3)));
