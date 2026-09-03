@@ -125,3 +125,25 @@ group.add(10);
 group.delete(10);
 console.log(group.has(10));
 // → false
+
+
+
+
+
+
+
+
+
+console.log("EX 3");
+
+
+
+
+// Your code here (and the code from the previous exercise)
+
+for (let value of Group.from(["a", "b", "c"])) {
+  console.log(value);
+}
+// → a
+// → b
+// → c
