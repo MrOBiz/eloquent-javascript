@@ -62,29 +62,59 @@ console.log("EX 2");
 class Group {
 
     constructor(){
-        return new Array();
+        this.group = new Array();
     }
     
     static from(arr){
         let group = new Group;
         for(let elt of arr){
-            group.push(elt);
+            group.add(elt);
         }
         return group;
     }
 
-    add(){
-
+    add(val){
+        if(this.group.indexOf(val) === -1){ 
+            this.group.push(val); 
+        }
     }
 
-    delete(){
-
+    delete(val){
+        this.group = this.group.filter(v => v !== val);
     }
 
-    has(){
-
+    has(val){
+        return this.group.includes(val);
     }
 }
+
+
+//BOOK SOLUTION
+/* class Group {
+  #members = [];
+
+  add(value) {
+    if (!this.has(value)) {
+      this.#members.push(value);
+    }
+  }
+
+  delete(value) {
+    this.#members = this.#members.filter(v => v !== value);
+  }
+
+  has(value) {
+    return this.#members.includes(value);
+  }
+
+  static from(collection) {
+    let group = new Group;
+    for (let value of collection) {
+      group.add(value);
+    }
+    return group;
+  }
+} */
 
 let group = Group.from([10, 20]);
 console.log(group.has(10));
