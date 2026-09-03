@@ -62,9 +62,13 @@ console.log("EX 2");
 class Group {
 
     constructor(){
-
+        return new Group;
     }
     
+    static from(arr){
+
+    }
+
     add(){
 
     }
