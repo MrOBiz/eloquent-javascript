@@ -62,11 +62,15 @@ console.log("EX 2");
 class Group {
 
     constructor(){
-        return new Group;
+        return new Array();
     }
     
     static from(arr){
-
+        let group = new Group;
+        for(let elt of arr){
+            group.push(elt);
+        }
+        return group;
     }
 
     add(){
