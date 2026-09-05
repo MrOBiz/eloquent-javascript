@@ -35,7 +35,8 @@ function makeVec(x, y){
 
     return vec;
 }
-//review how to add methods to prototype
+//review how to add methods to prototype 
+//see prototype chain
 
 //BOOK SOLUTION
 //same as my class
