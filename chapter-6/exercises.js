@@ -141,7 +141,7 @@ console.log("EX 3");
 
 
 
-// Your code here (and the code from the previous exercise)
+
 
 for (let value of Group.from(["a", "b", "c"])) {
   console.log(value);
@@ -149,3 +149,105 @@ for (let value of Group.from(["a", "b", "c"])) {
 // → a
 // → b
 // → c
+
+
+
+
+
+
+
+
+
+console.log("EX 4 — iterable Range");
+
+// Make this work:
+// for (let n of new Range(1, 4)) console.log(n);
+// → 1
+// → 2
+// → 3
+// → 4
+// Inclusive: 1 and 4 both count.
+// Empty: Range(3, 1) yields nothing.
+// Keep the current number on the iterator, not on the Range.
+
+class Range {
+    constructor(from, to) {
+        this.from = from;
+        this.to = to;
+    }
+
+    // TODO: [Symbol.iterator]() { return a new RangeIterator for this range }
+}
+
+class RangeIterator {
+    constructor(/* TODO: what does the cursor need? */) {
+        // TODO
+    }
+
+    next() {
+        // TODO: return { value, done: false } or { done: true }
+    }
+}
+
+let range = new Range(1, 4);
+// let it = range[Symbol.iterator]();
+// console.log(it.next());
+// console.log(it.next());
+// console.log(it.next());
+// console.log(it.next());
+// console.log(it.next());
+// for (let n of range) {
+//     console.log(n);
+// }
+// console.log([...new Range(1, 4)]); // [1, 2, 3, 4]
+// console.log([...new Range(5, 5)]); // [5]
+// console.log([...new Range(3, 1)]); // []
+
+
+
+
+
+
+
+
+
+console.log("EX 5 — iterable myTrip");
+
+// myTrip is array-like AND a hiking route. Those two "length"s already
+// coexist. Add a third interface: iterable, yielding waypoint NAMES only.
+//
+// for (let stop of myTrip) console.log(stop);
+// → Lankwitz
+// → Babelsberg
+//
+// Do not yield 21500. Do not change length / [length] / 0 / 1.
+
+const length = Symbol("length");
+
+let myTrip = {
+    length: 2,
+    0: "Lankwitz",
+    1: "Babelsberg",
+    [length]: 21500
+    // TODO: you can put [Symbol.iterator]() { ... } in here (needs a comma above)
+};
+
+// TODO: or attach it after:
+// myTrip[Symbol.iterator] = function() { ... };
+
+console.log(myTrip.length);      // 2  (waypoint count, string key)
+console.log(myTrip[length]);     // 21500  (meters, symbol key)
+
+// let tripIt = myTrip[Symbol.iterator]();
+// console.log(tripIt.next());
+// console.log(tripIt.next());
+// console.log(tripIt.next());
+// for (let stop of myTrip) {
+//     console.log(stop);
+// }
+// console.log([...myTrip]); // ["Lankwitz", "Babelsberg"]
+
+// stretch: add a third stop without breaking the iterator
+// myTrip[2] = "Potsdam";
+// myTrip.length = 3;
+// console.log([...myTrip]); // ["Lankwitz", "Babelsberg", "Potsdam"]
