@@ -88,6 +88,10 @@ class Group {
     has(val){
         return this.group.includes(val);
     }
+
+    [Symbol.iterator](){
+        return new GroupIterator;
+    }
 }
 
 
@@ -139,7 +143,11 @@ console.log(group.has(10));
 console.log("EX 3");
 
 
-
+class GroupIterator {
+    constructor(Group) {
+        //this.index = 
+    }
+}
 
 
 
