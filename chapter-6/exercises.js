@@ -143,9 +143,10 @@ console.log("EX 3");
 
 
 
-for (let value of Group.from(["a", "b", "c"])) {
-  console.log(value);
-}
+// throws until Group is iterable — uncomment when you do EX 3
+// for (let value of Group.from(["a", "b", "c"])) {
+//   console.log(value);
+// }
 // → a
 // → b
 // → c
@@ -176,32 +177,40 @@ class Range {
         this.to = to;
     }
 
-    // TODO: [Symbol.iterator]() { return a new RangeIterator for this range }
+    [Symbol.iterator]() {
+        return new RangeIterator(this.from, this.to);
+    }
 }
 
 class RangeIterator {
-    constructor(/* TODO: what does the cursor need? */) {
-        // TODO
+    constructor(from, to) {
+        this.current = from;
+        this.to = to;
     }
 
     next() {
-        // TODO: return { value, done: false } or { done: true }
+        if (this.current > this.to) {
+            return {done: true};
+        }
+        let value = this.current;
+        this.current += 1;
+        return {value, done: false};
     }
 }
 
 let range = new Range(1, 4);
-// let it = range[Symbol.iterator]();
-// console.log(it.next());
-// console.log(it.next());
-// console.log(it.next());
-// console.log(it.next());
-// console.log(it.next());
-// for (let n of range) {
-//     console.log(n);
-// }
-// console.log([...new Range(1, 4)]); // [1, 2, 3, 4]
-// console.log([...new Range(5, 5)]); // [5]
-// console.log([...new Range(3, 1)]); // []
+let it = range[Symbol.iterator]();
+console.log(it.next());
+console.log(it.next());
+console.log(it.next());
+console.log(it.next());
+console.log(it.next());
+for (let n of range) {
+    console.log(n);
+}
+console.log([...new Range(1, 4)]); // [1, 2, 3, 4]
+console.log([...new Range(5, 5)]); // [5]
+console.log([...new Range(3, 1)]); // []
 
 
 
@@ -229,25 +238,37 @@ let myTrip = {
     0: "Lankwitz",
     1: "Babelsberg",
     [length]: 21500
-    // TODO: you can put [Symbol.iterator]() { ... } in here (needs a comma above)
 };
 
-// TODO: or attach it after:
-// myTrip[Symbol.iterator] = function() { ... };
+myTrip[Symbol.iterator] = function() {
+    let index = 0;
+    let trip = this;
+
+    return {
+        next() {
+            if (index >= trip.length) {
+                return {done: true};
+            }
+            let value = trip[index];
+            index += 1;
+            return {value, done: false};
+        }
+    };
+};
 
 console.log(myTrip.length);      // 2  (waypoint count, string key)
 console.log(myTrip[length]);     // 21500  (meters, symbol key)
 
-// let tripIt = myTrip[Symbol.iterator]();
-// console.log(tripIt.next());
-// console.log(tripIt.next());
-// console.log(tripIt.next());
-// for (let stop of myTrip) {
-//     console.log(stop);
-// }
-// console.log([...myTrip]); // ["Lankwitz", "Babelsberg"]
+let tripIt = myTrip[Symbol.iterator]();
+console.log(tripIt.next());
+console.log(tripIt.next());
+console.log(tripIt.next());
+for (let stop of myTrip) {
+    console.log(stop);
+}
+console.log([...myTrip]); // ["Lankwitz", "Babelsberg"]
 
 // stretch: add a third stop without breaking the iterator
-// myTrip[2] = "Potsdam";
-// myTrip.length = 3;
-// console.log([...myTrip]); // ["Lankwitz", "Babelsberg", "Potsdam"]
+myTrip[2] = "Potsdam";
+myTrip.length = 3;
+console.log([...myTrip]); // ["Lankwitz", "Babelsberg", "Potsdam"]
