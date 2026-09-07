@@ -176,7 +176,9 @@ class Range {
         this.to = to;
     }
 
-    // TODO: [Symbol.iterator]() { return a new RangeIterator for this range }
+    [Symbol.iterator]() { 
+        return new RangeIterator(this.from, this.to);
+    }
 }
 
 class RangeIterator {
@@ -195,27 +197,23 @@ class RangeIterator {
     }
 }
 
-let finger = new RangeIterator(1, 4);
-console.log(finger.next());
-console.log(finger.next());
-console.log(finger.next());
-console.log(finger.next());
-console.log(finger.next());
 
 
 let range = new Range(1, 4);
-// let it = range[Symbol.iterator]();
-// console.log(it.next());
-// console.log(it.next());
-// console.log(it.next());
-// console.log(it.next());
-// console.log(it.next());
-// for (let n of range) {
-//     console.log(n);
-// }
-// console.log([...new Range(1, 4)]); // [1, 2, 3, 4]
-// console.log([...new Range(5, 5)]); // [5]
-// console.log([...new Range(3, 1)]); // []
+let it = range[Symbol.iterator]();
+console.log(it.next());
+console.log(it.next());
+console.log(it.next());
+console.log(it.next());
+console.log(it.next());
+
+for (let n of range) {
+     console.log(n);
+}
+
+console.log([...new Range(1, 4)]); // [1, 2, 3, 4]
+console.log([...new Range(5, 5)]); // [5]
+console.log([...new Range(3, 1)]); // []
 
 
 
