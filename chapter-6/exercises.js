@@ -246,9 +246,16 @@ let myTrip = {
 
 // TODO: or attach it after:
 myTrip[Symbol.iterator] = function() {
+    let index = 0;
+
     return {
         next() {
-
+            if(index >= myTrip.length){
+                return {done: true};
+            }
+            let name = myTrip[index];
+            index += 1;
+            return {value: name, done: false};
         }
     };
 };
@@ -258,16 +265,17 @@ console.log(typeof myTrip[Symbol.iterator]);
 console.log(myTrip.length);      // 2  (waypoint count, string key)
 console.log(myTrip[length]);     // 21500  (meters, symbol key)
 
-// let tripIt = myTrip[Symbol.iterator]();
-// console.log(tripIt.next());
-// console.log(tripIt.next());
-// console.log(tripIt.next());
-// for (let stop of myTrip) {
-//     console.log(stop);
-// }
-// console.log([...myTrip]); // ["Lankwitz", "Babelsberg"]
+let tripIt = myTrip[Symbol.iterator]();
+console.log(tripIt.next());
+console.log(tripIt.next());
+console.log(tripIt.next());
+
+for (let stop of myTrip) {
+     console.log(stop);
+}
+console.log([...myTrip]); // ["Lankwitz", "Babelsberg"]
 
 // stretch: add a third stop without breaking the iterator
-// myTrip[2] = "Potsdam";
-// myTrip.length = 3;
-// console.log([...myTrip]); // ["Lankwitz", "Babelsberg", "Potsdam"]
+myTrip[2] = "Potsdam";
+myTrip.length = 3;
+console.log([...myTrip]); // ["Lankwitz", "Babelsberg", "Potsdam"]
