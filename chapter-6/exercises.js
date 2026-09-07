@@ -90,7 +90,7 @@ class Group {
     }
 
     [Symbol.iterator](){
-        return new GroupIterator;
+        return new GroupIterator(this.group);
     }
 }
 
@@ -144,16 +144,33 @@ console.log("EX 3");
 
 
 class GroupIterator {
-    constructor(Group) {
-        //this.index = 
+    constructor(elements) {
+        this.index = 0;
+        this.elements = elements;
+    }
+
+    next() {
+        if(this.index >= this.elements.length){
+            return {done: true};
+        }
+        let val = this.elements[this.index];
+        this.index += 1;
+        return {value: val, done: false};
     }
 }
 
+let g = Group.from(["a", "b", "c"]);
+console.log(g.group);
+let pointer = new GroupIterator(g.group);
+console.log(pointer.next());
+console.log(pointer.next());
+console.log(pointer.next());
+console.log(pointer.next());
 
 
-/* for (let value of Group.from(["a", "b", "c"])) {
+for (let value of Group.from(["a", "b", "c"])) {
   console.log(value);
-} */
+}       
 // → a
 // → b
 // → c
