@@ -186,9 +186,22 @@ class RangeIterator {
     }
 
     next() {
-        // TODO: return { value, done: false } or { done: true }
+        if(this.current > this.to){
+            return {done: true};
+        }
+        let value = this.current;
+        this.current += 1;
+        return {value, done: false};
     }
 }
+
+let finger = new RangeIterator(1, 4);
+console.log(finger.next());
+console.log(finger.next());
+console.log(finger.next());
+console.log(finger.next());
+console.log(finger.next());
+
 
 let range = new Range(1, 4);
 // let it = range[Symbol.iterator]();
