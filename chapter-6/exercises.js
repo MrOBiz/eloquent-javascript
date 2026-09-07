@@ -245,7 +245,15 @@ let myTrip = {
 };
 
 // TODO: or attach it after:
-// myTrip[Symbol.iterator] = function() { ... };
+myTrip[Symbol.iterator] = function() {
+    return {
+        next() {
+
+        }
+    };
+};
+
+console.log(typeof myTrip[Symbol.iterator]);
 
 console.log(myTrip.length);      // 2  (waypoint count, string key)
 console.log(myTrip[length]);     // 21500  (meters, symbol key)
